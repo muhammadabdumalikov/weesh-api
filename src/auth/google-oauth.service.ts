@@ -23,11 +23,8 @@ export class GoogleOAuthService {
     );
   }
 
-  async verifyIdToken(idToken: string, client?: string): Promise<GoogleUserInfo> {
-    const clientId =
-      client === 'weesh'
-        ? process.env.WEESH_GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID
-        : process.env.GOOGLE_CLIENT_ID;
+  async verifyIdToken(idToken: string): Promise<GoogleUserInfo> {
+    const clientId = process.env.GOOGLE_CLIENT_ID;
     if (!clientId?.trim()) {
       console.error(
         'GOOGLE_CLIENT_ID is not set. Set it to the same value as the frontend (e.g. NEXT_PUBLIC_GOOGLE_CLIENT_ID).',

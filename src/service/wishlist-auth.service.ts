@@ -172,7 +172,6 @@ export class WishlistAuthService {
     }
     const userInfo = await this.googleOAuthService.verifyIdToken(
       idToken.trim(),
-      'weesh',
     );
     const googleId = userInfo.sub;
     const login = userInfo.email ?? `google_${googleId}`;
